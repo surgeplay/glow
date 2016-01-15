@@ -36,4 +36,9 @@ public class Texture {
 	public void bind() {
 		GL11.glBindTexture(GL_TEXTURE_2D, handle);
 	}
+	
+	@Override
+	public void finalize() {
+		if (handle!=-1 && handle!=0) GL11.glDeleteTextures(handle);
+	}
 }
