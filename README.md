@@ -1,4 +1,4 @@
-# GLOW is a set of GL Object Wrappers
+# ![GLOW logo](glow_logo.png) GLOW is a set of GL Object Wrappers
 
 Interacting with a "flat" procedural or static view of lwjgl can be difficult from an
 object-oriented environment. Generally in a C/C++ environment, simply #import'ing the GL loader
