@@ -10,3 +10,8 @@ gradle-app.setting
 # Cache of project
 .gradletasknamecache
 /bin/
+
+# Eclipse garbage
+.classpath
+.project
+.settings/
