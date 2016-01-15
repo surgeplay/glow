@@ -6,7 +6,9 @@ library places the entire GL namespace in a static context. To do the equivalent
 environment (and to use most intelligently-produced examples found online) you would need to create
 an extremely ugly static import block:
 
+```java
 	import static org.lwjgl.opengl.GL11.*;
+	import static org.lwjgl.opengl.GL12.*;
 	import static org.lwjgl.opengl.GL13.*;
 	import static org.lwjgl.opengl.GL14.*;
 	import static org.lwjgl.opengl.GL15.*;
@@ -17,7 +19,7 @@ an extremely ugly static import block:
 	import static org.lwjgl.opengl.GL32.*;
 	import static org.lwjgl.opengl.GL33.*;
 	import static org.lwjgl.opengl.GL43.*;
-
+```
 ...plus any EXT or ARB features you planned on using. The other problem that comes up quite quickly
 is that all GL constants are exposed as integers, making it unclear which constants are used for
 what purposes.
