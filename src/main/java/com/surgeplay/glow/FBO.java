@@ -9,6 +9,7 @@ import org.lwjgl.opengl.GL30;
  * 
  * <p>Make sure to create instances only after you have a valid GL context.
  */
+@GLCoreSince(gl=30, es=20)
 public class FBO {
 	private final int handle;
 	public FBO() {

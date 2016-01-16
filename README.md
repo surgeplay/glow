@@ -30,3 +30,24 @@ layer. On top of that is a series of objects intended to group functionality int
 which accurately represent the underlying hardware. These object wrappers can be used either by
 themselves as an encapsulation of complexity, or with each other to provide more context and
 type-safety.
+
+# FAQ
+
+Q: I distrust third-party libraries. Is there a reason I should make an exception for yours?
+
+	A: Good, so do I! My goal here is really to do a lot of sorting and
+	clarifying that's outside the scope of what the Khronos group is building.
+	The main reasons you might be interested in using it are:
+	
+	The library can be used piecemeal, if you only like one or two pieces.
+	
+	The library tries really hard not to get in the way of performance, just
+	wrapping a GL Object in a Java Object for type safety and contextualization.
+
+Q: You're using one flat constants class. Are OpenGL constants actually the same between OpenGL and
+OpenGL ES?
+
+	A: There is total consistency in the integer constants from GL to GLES. The
+	only thing that changes is which versions they're supported in (or whether
+	they're supported.)
+
