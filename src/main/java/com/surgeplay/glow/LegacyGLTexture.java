@@ -9,9 +9,9 @@ import java.nio.ByteOrder;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL42;
 
-public class Texture {
+public class LegacyGLTexture {
 	private int handle = GL_FALSE;
-	public Texture(BufferedImage im) {
+	public LegacyGLTexture(BufferedImage im) {
 		handle = GL11.glGenTextures();
 		bind();
 		GL11.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -22,7 +22,7 @@ public class Texture {
 		uploadData(im);
 	}
 	
-	public Texture(int width, int height) {
+	public LegacyGLTexture(int width, int height) {
 		handle = GL11.glGenTextures();
 		bind();
 		

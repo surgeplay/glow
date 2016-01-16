@@ -63,24 +63,21 @@ public class Context {
 		}
 	}
 	
-	/**
-	 * Sets up an OpenGL context in a really non-picky way. Often, on desktop environments, this
-	 * creates a compatibility context with fixed-function pipeline features still enabled. This
-	 * method is generally best if your code can bend to accommodate different feature sets.
-	 * 
-	 * <p>As a reminder, if you're having trouble with natives at this stage, try setting the path
-	 * for lwjgl to look for its natives:
-	 * <pre><code>
-	 * System.setProperty("org.lwjgl.librarypath", new File("native").getAbsolutePath());
-	 * </code></pre>
-	 */
-	public static long createWindow(String title) {
-		GLFW.glfwInit();
-		GLFW.glfwWindowHint(GLFW.GLFW_CLIENT_API, GLFW.GLFW_OPENGL_API);
-		long hWin = GLFW.glfwCreateWindow(1024, 768, "GL", 0, 0);
-		GLFW.glfwMakeContextCurrent(hWin);
-		org.lwjgl.opengl.GL.createCapabilities();
-		return hWin;
+	public static boolean check(int version) {
+		init();
+		return (Context.version>=version);
 	}
+	
+	public static boolean isGL() {
+		init();
+		return gl;
+	}
+	
+	public static boolean isES() {
+		init();
+		return !gl;
+	}
+	
+	
 	
 }
