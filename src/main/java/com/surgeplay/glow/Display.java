@@ -1,9 +1,16 @@
 package com.surgeplay.glow;
 
+import java.util.function.Consumer;
+
 import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWKeyCallback;
+import org.slf4j.Logger;
 
 public class Display {
 	private static long handle = 0;
+	private static GLFWErrorCallback errorCallback = null;
+	private static GLFWKeyCallback keyCallback = null;
 	
 	/**
 	 * Creates a GL context and window with the default GLFW_OPENGL_ANY_PROFILE,
@@ -83,5 +90,48 @@ public class Display {
 	
 	public static boolean isCreated() {
 		return handle!=0;
+	}
+	
+	public static void setErrorCallback(GLFWErrorCallback callback) {
+		GLFW.glfwSetErrorCallback(callback);
+		errorCallback = callback;
+		//GLFWErrorCallback.createString((int err,String str) -> LOGGER.warning(""+err+": "+str));
+	}
+	
+	public static void setErrorCallback(Consumer<String> consumer) {
+		GLFWErrorCallback tmp = GLFWErrorCallback.createString(
+				(int err,String str) -> consumer.accept(""+err+": "+str)
+		);
+		GLFW.glfwSetErrorCallback(tmp);
+		errorCallback = tmp;
+	}
+	
+	/** Convenience method to throw an IllegalStateException when an error occurs. */
+	public static void setErrorCallbackToThrowExceptions() {
+		//Temporary variable ensures no race conditions occur with GC for the old callback
+		GLFWErrorCallback tmp = GLFWErrorCallback.createThrow();
+		GLFW.glfwSetErrorCallback(tmp);
+		errorCallback = tmp;
+	}
+	
+	/** Convenience method to print a message out to System.err when an error occurs */
+	public static void setErrorCallbackToPrintToSterr() {
+		GLFWErrorCallback tmp = GLFWErrorCallback.createPrint(System.err);
+		GLFW.glfwSetErrorCallback(tmp);
+		errorCallback = tmp;
+	}
+	
+	/** Convenience method to print a message out to System.err when an error occurs */
+	public static void setErrorCallbackToLog(Logger log) {
+		GLFWErrorCallback tmp = GLFWErrorCallback.createString(
+				(int err,String str) -> log.error(""+err+": "+str)
+		);
+		GLFW.glfwSetErrorCallback(tmp);
+		errorCallback = tmp;
+	}
+	
+	public static void destroy() {
+		if (handle!=0) GLFW.glfwDestroyWindow(handle);
+		handle = 0;
 	}
 }
