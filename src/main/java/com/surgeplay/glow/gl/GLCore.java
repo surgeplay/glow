@@ -18,6 +18,7 @@ import org.lwjgl.opengl.GL30;
 import org.lwjgl.opengl.GL31;
 import org.lwjgl.opengl.GL32;
 import org.lwjgl.opengl.GL33;
+import org.lwjgl.opengl.GL41;
 import org.lwjgl.opengl.GL43;
 
 /**
@@ -35,11 +36,6 @@ public class GLCore implements CompatibleGL {
 	public void glAttachShader(int program, int shader) {
 		GL20.glAttachShader(program, shader);
 	}
-
-	/*@Override
-	public void glBindAttribLocation(int program, int index, ByteBuffer name) {
-		GL20.glBindAttribLocation(program, index, name);
-	}*/
 
 	@Override
 	public void glBindAttribLocation(int program, int index, CharSequence name) {
@@ -162,8 +158,9 @@ public class GLCore implements CompatibleGL {
 	}
 
 	@Override
-	public void glClearDepthf(float d) {
-		GL11.glClearDepth(d); //TODO: does this even exist in Core GL?
+	public void glClearDepth(float d) {
+		//GL41.glClearDepthf(d); //No.
+		GL11.glClearDepth(d);
 	}
 
 	@Override
@@ -532,11 +529,6 @@ public class GLCore implements CompatibleGL {
 		return GL20.glGetAttachedShaders(program);
 	}
 
-	/*@Override
-	public int glGetAttribLocation(int program, ByteBuffer name) {
-		return GL20.glGetAttribLocation(program, name);
-	}*/
-
 	@Override
 	public int glGetAttribLocation(int program, CharSequence name) {
 		return GL20.glGetAttribLocation(program, name);
@@ -594,320 +586,222 @@ public class GLCore implements CompatibleGL {
 
 	@Override
 	public void glGetFramebufferAttachmentParameteriv(int target, int attachment, int pname, IntBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL30.glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
 	}
 
 	@Override
 	public int glGetFramebufferAttachmentParameteri(int target, int attachment, int pname) {
-		// TODO Auto-generated method stub
-		return 0;
+		return GL30.glGetFramebufferAttachmentParameteri(target, attachment, pname);
 	}
 
 	@Override
 	public void glGetIntegerv(int pname, ByteBuffer data) {
-		// TODO Auto-generated method stub
-		
+		GL11.glGetIntegerv(pname, data);
 	}
 
 	@Override
 	public void glGetIntegerv(int pname, IntBuffer data) {
-		// TODO Auto-generated method stub
-		
+		GL11.glGetIntegerv(pname, data);
 	}
 
 	@Override
 	public int glGetInteger(int pname) {
-		// TODO Auto-generated method stub
-		return 0;
+		return GL11.glGetInteger(pname);
 	}
 
 	@Override
 	public void glGetProgramiv(int program, int pname, ByteBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetProgramiv(program, pname, params);
 	}
 
 	@Override
 	public void glGetProgramiv(int program, int pname, IntBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetProgramiv(program, pname, params);
 	}
 
 	@Override
 	public int glGetProgrami(int program, int pname) {
-		// TODO Auto-generated method stub
-		return 0;
+		return GL20.glGetProgrami(program, pname);
 	}
 
 	@Override
 	public void glGetProgramInfoLog(int program, int bufSize, ByteBuffer length, ByteBuffer infoLog) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetProgramInfoLog(program, bufSize, length, infoLog);
 	}
 
 	@Override
 	public void glGetProgramInfoLog(int program, IntBuffer length, ByteBuffer infoLog) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetProgramInfoLog(program, length, infoLog);
 	}
 
 	@Override
 	public String glGetProgramInfoLog(int program, int bufSize) {
-		// TODO Auto-generated method stub
-		return null;
+		return GL20.glGetProgramInfoLog(program, bufSize);
 	}
 
 	@Override
 	public String glGetProgramInfoLog(int program) {
-		// TODO Auto-generated method stub
-		return null;
+		return GL20.glGetProgramInfoLog(program);
 	}
 
 	@Override
 	public void glGetRenderbufferParameteriv(int target, int pname, ByteBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL30.glGetRenderbufferParameteriv(target, pname, params);
 	}
 
 	@Override
 	public void glGetRenderbufferParameteriv(int target, int pname, IntBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL30.glGetRenderbufferParameteriv(target, pname, params);
 	}
 
 	@Override
 	public int glGetRenderbufferParameteri(int target, int pname) {
-		// TODO Auto-generated method stub
-		return 0;
+		return GL30.glGetRenderbufferParameteri(target, pname);
 	}
 
 	@Override
 	public void glGetShaderiv(int shader, int pname, ByteBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetShaderiv(shader, pname, params);
 	}
 
 	@Override
 	public void glGetShaderiv(int shader, int pname, IntBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetShaderiv(shader, pname, params);
 	}
 
 	@Override
 	public int glGetShaderi(int shader, int pname) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void glGetShaderInfoLog(int shader, int bufSize, ByteBuffer length, ByteBuffer infoLog) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void glGetShaderInfoLog(int shader, IntBuffer length, ByteBuffer infoLog) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String glGetShaderInfoLog(int shader, int bufSize) {
-		// TODO Auto-generated method stub
-		return null;
+		return GL20.glGetShaderi(shader, pname);
 	}
 
 	@Override
 	public String glGetShaderInfoLog(int shader) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void glGetShaderPrecisionFormat(int shadertype, int precisiontype, ByteBuffer range, ByteBuffer precision) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void glGetShaderPrecisionFormat(int shadertype, int precisiontype, IntBuffer range, IntBuffer precision) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void glGetShaderSource(int shader, int bufSize, ByteBuffer length, ByteBuffer source) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void glGetShaderSource(int shader, IntBuffer length, ByteBuffer source) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String glGetShaderSource(int shader, int bufSize) {
-		// TODO Auto-generated method stub
-		return null;
+		return GL20.glGetShaderInfoLog(shader);
 	}
 
 	@Override
 	public String glGetShaderSource(int shader) {
-		// TODO Auto-generated method stub
-		return null;
+		return GL20.glGetShaderSource(shader);
 	}
 
 	@Override
 	public String glGetString(int name) {
-		// TODO Auto-generated method stub
-		return null;
+		return GL11.glGetString(name);
 	}
 
 	@Override
 	public void glGetTexParameterfv(int target, int pname, ByteBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL11.glGetTexParameterfv(target, pname, params);
 	}
 
 	@Override
 	public void glGetTexParameterfv(int target, int pname, FloatBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL11.glGetTexParameterfv(target, pname, params);
 	}
 
 	@Override
 	public float glGetTexParameterf(int target, int pname) {
-		// TODO Auto-generated method stub
-		return 0;
+		return GL11.glGetTexParameterf(target, pname);
 	}
 
 	@Override
 	public void glGetTexParameteriv(int target, int pname, ByteBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL11.glGetTexParameteriv(target, pname, params);
 	}
 
 	@Override
 	public void glGetTexParameteriv(int target, int pname, IntBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL11.glGetTexParameteriv(target, pname, params);
 	}
 
 	@Override
 	public int glGetTexParameteri(int target, int pname) {
-		// TODO Auto-generated method stub
-		return 0;
+		return GL11.glGetTexParameteri(target, pname);
 	}
 
 	@Override
 	public void glGetUniformfv(int program, int location, ByteBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetUniformfv(program, location, params);
 	}
 
 	@Override
 	public void glGetUniformfv(int program, int location, FloatBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetUniformfv(program, location, params);
 	}
 
 	@Override
 	public float glGetUniformf(int program, int location) {
-		// TODO Auto-generated method stub
-		return 0;
+		return GL20.glGetUniformf(program, location);
 	}
 
 	@Override
 	public void glGetUniformiv(int program, int location, ByteBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetUniformiv(program, location, params);
 	}
 
 	@Override
 	public void glGetUniformiv(int program, int location, IntBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetUniformiv(program, location, params);
 	}
 
 	@Override
 	public int glGetUniformi(int program, int location) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int glGetUniformLocation(int program, ByteBuffer name) {
-		// TODO Auto-generated method stub
-		return 0;
+		return GL20.glGetUniformi(program, location);
 	}
 
 	@Override
 	public int glGetUniformLocation(int program, CharSequence name) {
-		// TODO Auto-generated method stub
-		return 0;
+		return GL20.glGetUniformLocation(program, name);
 	}
 
 	@Override
 	public void glGetVertexAttribfv(int index, int pname, ByteBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetVertexAttribfv(index, pname, params);
 	}
 
 	@Override
 	public void glGetVertexAttribfv(int index, int pname, FloatBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetVertexAttribfv(index, pname, params);
 	}
 
 	@Override
 	public void glGetVertexAttribiv(int index, int pname, ByteBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetVertexAttribiv(index, pname, params);
 	}
 
 	@Override
 	public void glGetVertexAttribiv(int index, int pname, IntBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetVertexAttribiv(index, pname, params);
 	}
 
 	@Override
 	public void glGetVertexAttribPointerv(int index, int pname, ByteBuffer pointer) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetVertexAttribPointerv(index, pname, pointer);
 	}
 
 	@Override
 	public void glGetVertexAttribPointerv(int index, int pname, PointerBuffer pointer) {
-		// TODO Auto-generated method stub
-		
+		GL20.glGetVertexAttribPointerv(index, pname, pointer);
 	}
 
 	@Override
 	public long glGetVertexAttribPointer(int index, int pname) {
-		// TODO Auto-generated method stub
-		return 0;
+		return GL20.glGetVertexAttribPointer(index, pname);
 	}
 
 	@Override
 	public void glHint(int target, int mode) {
-		// TODO Auto-generated method stub
-		
+		GL11.glHint(target, mode);
 	}
 
 	@Override
 	public boolean glIsBuffer(int buffer) {
-		// TODO Auto-generated method stub
-		return false;
+		return GL15.glIsBuffer(buffer);
 	}
 
 	@Override
 	public boolean glIsEnabled(int cap) {
-		// TODO Auto-generated method stub
-		return false;
+		return GL11.glIsEnabled(cap);
 	}
 
 	@Override
@@ -1026,18 +920,6 @@ public class GLCore implements CompatibleGL {
 
 	@Override
 	public void glShaderBinary(IntBuffer shaders, int binaryformat, ByteBuffer binary) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void glShaderSource(int shader, int count, ByteBuffer string, ByteBuffer length) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void glShaderSource(int shader, PointerBuffer string, IntBuffer length) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -1468,29 +1350,25 @@ public class GLCore implements CompatibleGL {
 	}
 
 	@Override
-	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride,
-			long pointerOffset) {
+	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, long pointerOffset) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride,
-			ShortBuffer pointer) {
+	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, ShortBuffer pointer) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride,
-			IntBuffer pointer) {
+	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, IntBuffer pointer) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride,
-			FloatBuffer pointer) {
+	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, FloatBuffer pointer) {
 		// TODO Auto-generated method stub
 		
 	}

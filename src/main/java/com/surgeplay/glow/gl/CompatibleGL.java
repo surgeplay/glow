@@ -16,7 +16,6 @@ public interface CompatibleGL {
 	
 	public void glAttachShader(int program, int shader);
 	
-	//public void glBindAttribLocation(int program, int index, ByteBuffer name);
 	public void glBindAttribLocation(int program, int index, CharSequence name);
 	public void glBindBuffer(int target, int buffer);
 	public void glBindFramebuffer(int target, int framebuffer);
@@ -46,7 +45,10 @@ public interface CompatibleGL {
 	
 	public void glClear(int mask);
 	public void glClearColor(float red, float green, float blue, float alpha);
-	public void glClearDepthf(float d);
+	/**
+	 * Note: Depth will be cleared using glClearDepth on CoreGL and glClearDepthf on GLES
+	 */
+	public void glClearDepth(float d);
 	public void glClearStencil(int s);
 	
 	public void glColorMask(boolean red, boolean green, boolean blue, boolean alpha);
@@ -157,7 +159,6 @@ public interface CompatibleGL {
 	public IntBuffer glGetAttachedShaders(int program, int maxCount);
 	public IntBuffer glGetAttachedShaders(int program);
 	
-	//public int glGetAttribLocation(int program, ByteBuffer name);
 	public int glGetAttribLocation(int program, CharSequence name);
 	
 	public void glGetBooleanv(int pname, ByteBuffer data);
@@ -196,16 +197,9 @@ public interface CompatibleGL {
 	public void glGetShaderiv(int shader, int pname, ByteBuffer params);
 	public void glGetShaderiv(int shader, int pname, IntBuffer params);
 	public int glGetShaderi(int shader, int pname);
-	public void glGetShaderInfoLog(int shader, int bufSize, ByteBuffer length, ByteBuffer infoLog);
-	public void glGetShaderInfoLog(int shader, IntBuffer length, ByteBuffer infoLog);
-	public String glGetShaderInfoLog(int shader, int bufSize);
 	public String glGetShaderInfoLog(int shader);
-	public void glGetShaderPrecisionFormat(int shadertype, int precisiontype, ByteBuffer range, ByteBuffer precision);
-	public void glGetShaderPrecisionFormat(int shadertype, int precisiontype, IntBuffer range, IntBuffer precision);
-	public void glGetShaderSource(int shader, int bufSize, ByteBuffer length, ByteBuffer source);
-	public void glGetShaderSource(int shader, IntBuffer length, ByteBuffer source);
-	public String glGetShaderSource(int shader, int bufSize);
 	public String glGetShaderSource(int shader);
+	
 	public String glGetString(int name);
 	
 	public void glGetTexParameterfv(int target, int pname, ByteBuffer params);
@@ -222,7 +216,7 @@ public interface CompatibleGL {
 	public void glGetUniformiv(int program, int location, IntBuffer params);
 	public int glGetUniformi(int program, int location);
 	
-	public int glGetUniformLocation(int program, ByteBuffer name);
+	//public int glGetUniformLocation(int program, ByteBuffer name);
 	public int glGetUniformLocation(int program, CharSequence name);
 	
 	public void glGetVertexAttribfv(int index, int pname, ByteBuffer params);
@@ -269,8 +263,8 @@ public interface CompatibleGL {
 	public void glShaderBinary(int count, ByteBuffer shaders, int binaryformat, ByteBuffer binary, int length);
 	public void glShaderBinary(IntBuffer shaders, int binaryformat, ByteBuffer binary);
 	
-	public void glShaderSource(int shader, int count, ByteBuffer string, ByteBuffer length);
-	public void glShaderSource(int shader, PointerBuffer string, IntBuffer length);
+	//public void glShaderSource(int shader, int count, ByteBuffer string, ByteBuffer length);
+	//public void glShaderSource(int shader, PointerBuffer string, IntBuffer length);
 	public void glShaderSource(int shader, CharSequence... string);
 	public void glShaderSource(int shader, CharSequence string);
 	
