@@ -1,7 +1,5 @@
 package com.surgeplay.glow;
 
-import java.io.File;
-
 import org.lwjgl.glfw.GLFW;
 
 /**

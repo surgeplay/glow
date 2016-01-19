@@ -85,7 +85,7 @@ public class Texture {
 	
 	
 	public static ByteBuffer extractImageData(BufferedImage im) {
-		ByteBuffer pixelData = ByteBuffer.allocateDirect(im.getWidth()*im.getHeight()*4).order(ByteOrder.LITTLE_ENDIAN);
+		ByteBuffer pixelData = ByteBuffer.allocateDirect(im.getWidth()*im.getHeight()*4).order(ByteOrder.nativeOrder());
 		for(int y=0; y<im.getHeight(); y++) {
 			for(int x=0; x<im.getWidth(); x++) {
 				int col = im.getRGB(x, y);

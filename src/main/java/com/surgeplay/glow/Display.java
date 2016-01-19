@@ -9,7 +9,9 @@ import org.slf4j.Logger;
 
 public class Display {
 	private static long handle = 0;
+	@SuppressWarnings("unused")
 	private static GLFWErrorCallback errorCallback = null;
+	@SuppressWarnings("unused")
 	private static GLFWKeyCallback keyCallback = null;
 	
 	/**

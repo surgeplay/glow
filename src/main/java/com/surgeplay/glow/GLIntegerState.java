@@ -11,7 +11,6 @@ import static org.lwjgl.opengl.ARBImaging.*;
 import java.util.concurrent.Callable;
 
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 
 public enum GLIntegerState {
 	ACTIVE_TEXTURE					(GL_ACTIVE_TEXTURE),
