@@ -2,29 +2,26 @@ package com.surgeplay.glow.capsule;
 
 import static com.surgeplay.glow.GLConstant.*;
 
-import org.lwjgl.opengl.GL30;
-
-import com.surgeplay.glow.GLCoreSince;
+import com.surgeplay.glow.gl.CompatibleGL;
 
 /**
  * Represents an OpenGL Framebuffer Object.
  * 
  * <p>Make sure to create instances only after you have a valid GL context.
  */
-@GLCoreSince(gl=30, es=20)
 public class FBO {
 	private final int handle;
 	public FBO() {
-		handle = GL30.glGenFramebuffers();
+		handle = CompatibleGL.getInstance().glGenFramebuffers();
 	}
 	
 	public boolean isComplete() {
-		int status = GL30.glCheckFramebufferStatus(handle);
+		int status = CompatibleGL.getInstance().glCheckFramebufferStatus(handle);
 		return status==GL_FRAMEBUFFER_COMPLETE;
 	}
 	
 	public String getDebugInfo() {
-		int status = GL30.glCheckFramebufferStatus(handle);
+		int status = CompatibleGL.getInstance().glCheckFramebufferStatus(handle);
 		switch(status) {
 		case GL_FRAMEBUFFER_COMPLETE:
 			return "There's nothing wrong.";
@@ -50,19 +47,19 @@ public class FBO {
 	}
 	
 	public void setDrawTarget(int textureHandle) {
-		GL30.glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureHandle, 0);
+		CompatibleGL.getInstance().glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureHandle, 0);
 	}
 	
 	public void bindForDrawing() {
-		GL30.glBindFramebuffer(GL_DRAW_FRAMEBUFFER, handle);
+		CompatibleGL.getInstance().glBindFramebuffer(GL_DRAW_FRAMEBUFFER, handle);
 	}
 	
 	@Override
 	public void finalize() {
-		if (handle!=-1 && handle!=0) GL30.glDeleteFramebuffers(handle);
+		if (handle!=-1 && handle!=0) CompatibleGL.getInstance().glDeleteFramebuffers(handle);
 	}
 	
 	public static void bindDefault() {
-		GL30.glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		CompatibleGL.getInstance().glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 }
