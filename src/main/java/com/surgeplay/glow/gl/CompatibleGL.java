@@ -216,7 +216,6 @@ public interface CompatibleGL {
 	public void glGetUniformiv(int program, int location, IntBuffer params);
 	public int glGetUniformi(int program, int location);
 	
-	//public int glGetUniformLocation(int program, ByteBuffer name);
 	public int glGetUniformLocation(int program, CharSequence name);
 	
 	public void glGetVertexAttribfv(int index, int pname, ByteBuffer params);
@@ -252,19 +251,12 @@ public interface CompatibleGL {
 	public void glReadPixels(int x, int y, int width, int height, int format, int type, IntBuffer pixels);
 	public void glReadPixels(int x, int y, int width, int height, int format, int type, FloatBuffer pixels);
 	
-	public void glReleaseShaderCompiler();
-	
 	public void glRenderbufferStorage(int target, int internalformat, int width, int height);
 	
 	public void glSampleCoverage(float value, boolean invert);
 	
 	public void glScissor(int x, int y, int width, int height);
 	
-	public void glShaderBinary(int count, ByteBuffer shaders, int binaryformat, ByteBuffer binary, int length);
-	public void glShaderBinary(IntBuffer shaders, int binaryformat, ByteBuffer binary);
-	
-	//public void glShaderSource(int shader, int count, ByteBuffer string, ByteBuffer length);
-	//public void glShaderSource(int shader, PointerBuffer string, IntBuffer length);
 	public void glShaderSource(int shader, CharSequence... string);
 	public void glShaderSource(int shader, CharSequence string);
 	

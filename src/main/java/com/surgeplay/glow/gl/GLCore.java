@@ -8,18 +8,11 @@ import java.nio.ShortBuffer;
 import org.lwjgl.PointerBuffer;
 
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL14;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL21;
 import org.lwjgl.opengl.GL30;
-import org.lwjgl.opengl.GL31;
-import org.lwjgl.opengl.GL32;
-import org.lwjgl.opengl.GL33;
-import org.lwjgl.opengl.GL41;
-import org.lwjgl.opengl.GL43;
 
 /**
  * Exposes functions as if they were OpenGL ES 2.0, but forwards down to function pointers which are
@@ -806,577 +799,458 @@ public class GLCore implements CompatibleGL {
 
 	@Override
 	public boolean glIsFramebuffer(int framebuffer) {
-		// TODO Auto-generated method stub
-		return false;
+		return GL30.glIsFramebuffer(framebuffer);
 	}
 
 	@Override
 	public boolean glIsProgram(int program) {
-		// TODO Auto-generated method stub
-		return false;
+		return GL20.glIsProgram(program);
 	}
 
 	@Override
 	public boolean glIsRenderbuffer(int renderbuffer) {
-		// TODO Auto-generated method stub
-		return false;
+		return GL30.glIsRenderbuffer(renderbuffer);
 	}
 
 	@Override
 	public boolean glIsShader(int shader) {
-		// TODO Auto-generated method stub
-		return false;
+		return GL20.glIsShader(shader);
 	}
 
 	@Override
 	public boolean glIsTexture(int texture) {
-		// TODO Auto-generated method stub
-		return false;
+		return GL11.glIsTexture(texture);
 	}
 
 	@Override
 	public void glLineWidth(float width) {
-		// TODO Auto-generated method stub
-		
+		GL11.glLineWidth(width);
 	}
 
 	@Override
 	public void glLinkProgram(int program) {
-		// TODO Auto-generated method stub
-		
+		GL20.glLinkProgram(program);
 	}
 
 	@Override
 	public void glPixelStorei(int pname, int param) {
-		// TODO Auto-generated method stub
-		
+		GL11.glPixelStorei(pname, param);
 	}
 
 	@Override
 	public void glPolygonOffset(float factor, float units) {
-		// TODO Auto-generated method stub
-		
+		GL11.glPolygonOffset(factor, units);
 	}
 
 	@Override
 	public void glReadPixels(int x, int y, int width, int height, int format, int type, ByteBuffer pixels) {
-		// TODO Auto-generated method stub
-		
+		GL11.glReadPixels(x, y, width, height, format, type, pixels);
 	}
 
 	@Override
 	public void glReadPixels(int x, int y, int width, int height, int format, int type, long pixelsOffset) {
-		// TODO Auto-generated method stub
-		
+		GL11.glReadPixels(x, y, width, height, format, type, pixelsOffset);
 	}
 
 	@Override
 	public void glReadPixels(int x, int y, int width, int height, int format, int type, ShortBuffer pixels) {
-		// TODO Auto-generated method stub
-		
+		GL11.glReadPixels(x, y, width, height, format, type, pixels);
 	}
 
 	@Override
 	public void glReadPixels(int x, int y, int width, int height, int format, int type, IntBuffer pixels) {
-		// TODO Auto-generated method stub
-		
+		GL11.glReadPixels(x, y, width, height, format, type, pixels);
 	}
 
 	@Override
 	public void glReadPixels(int x, int y, int width, int height, int format, int type, FloatBuffer pixels) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void glReleaseShaderCompiler() {
-		// TODO Auto-generated method stub
-		
+		GL11.glReadPixels(x, y, width, height, format, type, pixels);
 	}
 
 	@Override
 	public void glRenderbufferStorage(int target, int internalformat, int width, int height) {
-		// TODO Auto-generated method stub
-		
+		GL30.glRenderbufferStorage(target, internalformat, width, height);
 	}
 
 	@Override
 	public void glSampleCoverage(float value, boolean invert) {
-		// TODO Auto-generated method stub
-		
+		GL13.glSampleCoverage(value, invert);
 	}
 
 	@Override
 	public void glScissor(int x, int y, int width, int height) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void glShaderBinary(int count, ByteBuffer shaders, int binaryformat, ByteBuffer binary, int length) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void glShaderBinary(IntBuffer shaders, int binaryformat, ByteBuffer binary) {
-		// TODO Auto-generated method stub
-		
+		GL11.glScissor(x, y, width, height);
 	}
 
 	@Override
 	public void glShaderSource(int shader, CharSequence... string) {
-		// TODO Auto-generated method stub
-		
+		GL20.glShaderSource(shader, string);
 	}
 
 	@Override
 	public void glShaderSource(int shader, CharSequence string) {
-		// TODO Auto-generated method stub
-		
+		GL20.glShaderSource(shader, string);
 	}
 
 	@Override
 	public void glStencilFunc(int func, int ref, int mask) {
-		// TODO Auto-generated method stub
-		
+		GL11.glStencilFunc(func, ref, mask);
 	}
 
 	@Override
 	public void glStencilFuncSeparate(int face, int func, int ref, int mask) {
-		// TODO Auto-generated method stub
-		
+		GL20.glStencilFuncSeparate(face, func, ref, mask);
 	}
 
 	@Override
 	public void glStencilMask(int mask) {
-		// TODO Auto-generated method stub
-		
+		GL11.glStencilMask(mask);
 	}
 
 	@Override
 	public void glStencilMaskSeparate(int face, int mask) {
-		// TODO Auto-generated method stub
-		
+		GL20.glStencilMaskSeparate(face, mask);
 	}
 
 	@Override
 	public void glStencilOp(int fail, int zfail, int zpass) {
-		// TODO Auto-generated method stub
-		
+		GL11.glStencilOp(fail, zfail, zpass);
 	}
 
 	@Override
 	public void glStencilOpSeparate(int face, int sfail, int dpfail, int dppass) {
-		// TODO Auto-generated method stub
-		
+		GL20.glStencilOpSeparate(face, sfail, dpfail, dppass);
 	}
 
 	@Override
-	public void glTexImage2D(int target, int level, int internalformat, int width, int height, int border, int format,
-			int type, ByteBuffer pixels) {
-		// TODO Auto-generated method stub
-		
+	public void glTexImage2D(int target, int level, int internalformat, int width, int height, int border, int format, int type, ByteBuffer pixels) {
+		GL11.glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 	}
 
 	@Override
-	public void glTexImage2D(int target, int level, int internalformat, int width, int height, int border, int format,
-			int type, long pixelsOffset) {
-		// TODO Auto-generated method stub
-		
+	public void glTexImage2D(int target, int level, int internalformat, int width, int height, int border, int format, int type, long pixelsOffset) {
+		GL11.glTexImage2D(target, level, internalformat, width, height, border, format, type, pixelsOffset);
 	}
 
 	@Override
-	public void glTexImage2D(int target, int level, int internalformat, int width, int height, int border, int format,
-			int type, ShortBuffer pixels) {
-		// TODO Auto-generated method stub
-		
+	public void glTexImage2D(int target, int level, int internalformat, int width, int height, int border, int format, int type, ShortBuffer pixels) {
+		GL11.glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 	}
 
 	@Override
-	public void glTexImage2D(int target, int level, int internalformat, int width, int height, int border, int format,
-			int type, IntBuffer pixels) {
-		// TODO Auto-generated method stub
-		
+	public void glTexImage2D(int target, int level, int internalformat, int width, int height, int border, int format, int type, IntBuffer pixels) {
+		GL11.glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 	}
 
 	@Override
-	public void glTexImage2D(int target, int level, int internalformat, int width, int height, int border, int format,
-			int type, FloatBuffer pixels) {
-		// TODO Auto-generated method stub
-		
+	public void glTexImage2D(int target, int level, int internalformat, int width, int height, int border, int format, int type, FloatBuffer pixels) {
+		GL11.glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 	}
 
 	@Override
 	public void glTexParameterf(int target, int pname, float param) {
-		// TODO Auto-generated method stub
-		
+		GL11.glTexParameterf(target, pname, param);
 	}
 
 	@Override
 	public void glTexParameterfv(int target, int pname, ByteBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL11.glTexParameterfv(target, pname, params);
 	}
 
 	@Override
 	public void glTexParameterfv(int target, int pname, FloatBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL11.glTexParameterfv(target, pname, params);
 	}
 
 	@Override
 	public void glTexParameteri(int target, int pname, int param) {
-		// TODO Auto-generated method stub
-		
+		GL11.glTexParameteri(target, pname, param);
 	}
 
 	@Override
 	public void glTexParameteriv(int target, int pname, ByteBuffer params) {
-		// TODO Auto-generated method stub
-		
+		GL11.glTexParameteriv(target, pname, params);
 	}
 
 	@Override
 	public void glTexParameteriv(int target, int pname, IntBuffer params) {
-		// TODO Auto-generated method stub
+		GL11.glTexParameteriv(target, pname, params);
+	}
+
+	@Override
+	public void glTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, ByteBuffer pixels) {
+		GL11.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
+	}
+
+	@Override
+	public void glTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, long pixelsOffset) {
+		GL11.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixelsOffset);
 		
 	}
 
 	@Override
-	public void glTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format,
-			int type, ByteBuffer pixels) {
-		// TODO Auto-generated method stub
-		
+	public void glTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, ShortBuffer pixels) {
+		GL11.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
 	}
 
 	@Override
-	public void glTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format,
-			int type, long pixelsOffset) {
-		// TODO Auto-generated method stub
-		
+	public void glTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, IntBuffer pixels) {
+		GL11.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
 	}
 
 	@Override
-	public void glTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format,
-			int type, ShortBuffer pixels) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void glTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format,
-			int type, IntBuffer pixels) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void glTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format,
-			int type, FloatBuffer pixels) {
-		// TODO Auto-generated method stub
-		
+	public void glTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, FloatBuffer pixels) {
+		GL11.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
 	}
 
 	@Override
 	public void glUniform1f(int location, float v0) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform1f(location, v0);
 	}
 
 	@Override
 	public void glUniform1fv(int location, int count, ByteBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform1fv(location, count, value);
 	}
 
 	@Override
 	public void glUniform1fv(int location, FloatBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform1fv(location, value);
 	}
 
 	@Override
 	public void glUniform1i(int location, int v0) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform1i(location, v0);
 	}
 
 	@Override
 	public void glUniform1iv(int location, int count, ByteBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform1iv(location, count, value);
 	}
 
 	@Override
 	public void glUniform1iv(int location, IntBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform1iv(location, value);
 	}
 
 	@Override
 	public void glUniform2f(int location, float v0, float v1) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform2f(location, v0, v1);
 	}
 
 	@Override
 	public void glUniform2fv(int location, int count, ByteBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform2fv(location, count,value);
 	}
 
 	@Override
 	public void glUniform2fv(int location, FloatBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform2fv(location, value);
 	}
 
 	@Override
 	public void glUniform2i(int location, int v0, int v1) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform2i(location, v0, v1);
 	}
 
 	@Override
 	public void glUniform2iv(int location, int count, ByteBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform2iv(location, count, value);
 	}
 
 	@Override
 	public void glUniform2iv(int location, IntBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform2iv(location, value);
 	}
 
 	@Override
 	public void glUniform3f(int location, float v0, float v1, float v2) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform3f(location, v0, v1, v2);
 	}
 
 	@Override
 	public void glUniform3fv(int location, int count, ByteBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform3fv(location, count, value);
 	}
 
 	@Override
 	public void glUniform3fv(int location, FloatBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform3fv(location, value);
 	}
 
 	@Override
 	public void glUniform3i(int location, int v0, int v1, int v2) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform3i(location, v0, v1, v2);
 	}
 
 	@Override
 	public void glUniform3iv(int location, int count, ByteBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform3iv(location, count, value);
 	}
 
 	@Override
 	public void glUniform3iv(int location, IntBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform3iv(location, value);
 	}
 
 	@Override
 	public void glUniform4f(int location, float v0, float v1, float v2, float v3) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform4f(location, v0, v1, v2, v3);
 	}
 
 	@Override
 	public void glUniform4fv(int location, int count, ByteBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform4fv(location, count, value);
 	}
 
 	@Override
 	public void glUniform4fv(int location, FloatBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform4fv(location, value);
 	}
 
 	@Override
 	public void glUniform4i(int location, int v0, int v1, int v2, int v3) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform4i(location, v0, v1, v2, v3);
 	}
 
 	@Override
 	public void glUniform4iv(int location, int count, ByteBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform4iv(location, count, value);
 	}
 
 	@Override
 	public void glUniform4iv(int location, IntBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniform4iv(location, value);
 	}
 
 	@Override
 	public void glUniformMatrix2fv(int location, int count, boolean transpose, ByteBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniformMatrix2fv(location, count, transpose, value);
 	}
 
 	@Override
 	public void glUniformMatrix2fv(int location, boolean transpose, FloatBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniformMatrix2fv(location, transpose, value);
 	}
 
 	@Override
 	public void glUniformMatrix3fv(int location, int count, boolean transpose, ByteBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniformMatrix3fv(location, count, transpose, value);
 	}
 
 	@Override
 	public void glUniformMatrix3fv(int location, boolean transpose, FloatBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniformMatrix3fv(location, transpose, value);
 	}
 
 	@Override
 	public void glUniformMatrix4fv(int location, int count, boolean transpose, ByteBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniformMatrix4fv(location, count, transpose, value);
 	}
 
 	@Override
 	public void glUniformMatrix4fv(int location, boolean transpose, FloatBuffer value) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUniformMatrix4fv(location, transpose, value);
 	}
 
 	@Override
 	public void glUseProgram(int program) {
-		// TODO Auto-generated method stub
-		
+		GL20.glUseProgram(program);
 	}
 
 	@Override
 	public void glValidateProgram(int program) {
-		// TODO Auto-generated method stub
-		
+		GL20.glValidateProgram(program);
 	}
 
 	@Override
 	public void glVertexAttrib1f(int index, float x) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttrib1f(index, x);
 	}
 
 	@Override
 	public void glVertexAttrib1fv(int index, ByteBuffer v) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttrib1fv(index, v);
 	}
 
 	@Override
 	public void glVertexAttrib1fv(int index, FloatBuffer v) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttrib1fv(index, v);
 	}
 
 	@Override
 	public void glVertexAttrib2f(int index, float x, float y) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttrib2f(index, x, y);
 	}
 
 	@Override
 	public void glVertexAttrib2fv(int index, ByteBuffer v) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttrib2fv(index, v);
 	}
 
 	@Override
 	public void glVertexAttrib2fv(int index, FloatBuffer v) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttrib2fv(index, v);
 	}
 
 	@Override
 	public void glVertexAttrib3f(int index, float x, float y, float z) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttrib3f(index, x, y, z);
 	}
 
 	@Override
 	public void glVertexAttrib3fv(int index, ByteBuffer v) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttrib3fv(index, v);
 	}
 
 	@Override
 	public void glVertexAttrib3fv(int index, FloatBuffer v) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttrib3fv(index, v);
 	}
 
 	@Override
 	public void glVertexAttrib4f(int index, float x, float y, float z, float w) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttrib4f(index, x, y, z, w);
 	}
 
 	@Override
 	public void glVertexAttrib4fv(int index, ByteBuffer v) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttrib4fv(index, v);
 	}
 
 	@Override
 	public void glVertexAttrib4fv(int index, FloatBuffer v) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttrib4fv(index, v);
 	}
 
 	@Override
-	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride,
-			ByteBuffer pointer) {
-		// TODO Auto-generated method stub
-		
+	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, ByteBuffer pointer) {
+		GL20.glVertexAttribPointer(index, size, type, normalized, stride, pointer);
 	}
 
 	@Override
 	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, long pointerOffset) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttribPointer(index, size, type, normalized, stride, pointerOffset);
 	}
 
 	@Override
 	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, ShortBuffer pointer) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttribPointer(index, size, type, normalized, stride, pointer);
 	}
 
 	@Override
 	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, IntBuffer pointer) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttribPointer(index, size, type, normalized, stride, pointer);
 	}
 
 	@Override
 	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, FloatBuffer pointer) {
-		// TODO Auto-generated method stub
-		
+		GL20.glVertexAttribPointer(index, size, type, normalized, stride, pointer);
 	}
 
 	@Override
 	public void glViewport(int x, int y, int width, int height) {
-		// TODO Auto-generated method stub
-		
+		GL11.glViewport(x, y, width, height);
 	}
 
 }
