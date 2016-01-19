@@ -56,7 +56,9 @@ public class FBO {
 	
 	@Override
 	public void finalize() {
-		if (handle!=-1 && handle!=0) CompatibleGL.getInstance().glDeleteFramebuffers(handle);
+		if (handle!=-1 && handle!=0) {
+			CompatibleGL.getInstance().glDeleteFramebuffers(handle);
+		}
 	}
 	
 	public static void bindDefault() {

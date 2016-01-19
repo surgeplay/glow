@@ -84,6 +84,16 @@ public class Texture {
 
 	}
 	
+	public void setSize(int width, int height) {
+		CompatibleGL gl = CompatibleGL.getInstance();
+		gl.glBindTexture(GL_TEXTURE_2D, handle);
+		//NULL here actually works - it allocates space but leaves the contents undefined.
+		//See also the examples at https://www.opengl.org/wiki/Framebuffer_Object_Examples
+		gl.glTexImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_BGRA, GL_UNSIGNED_BYTE, (ByteBuffer)null);
+		gl.glGenerateMipmap(GL_TEXTURE_2D);
+
+	}
+	
 	
 	public static ByteBuffer extractImageData(BufferedImage im) {
 		if (APIBUFFER==null || APIBUFFER.capacity()<im.getWidth()*im.getHeight()*4) {

@@ -40,18 +40,6 @@ public class Context {
 		return (gl ? "OpenGL" : "OpenGL ES") + " " + (version/10.0f);
 	}
 	
-	public static boolean check(Object o) {
-		init();
-		GLCoreSince req = o.getClass().getDeclaredAnnotation(GLCoreSince.class);
-		if (req==null) return false;
-		
-		if (gl) {
-			return version >= req.gl();
-		} else {
-			return version >= req.es();
-		}
-	}
-	
 	public static boolean check(int gl, int es) {
 		init();
 		if (Context.gl) {
