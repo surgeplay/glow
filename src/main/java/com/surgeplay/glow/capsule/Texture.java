@@ -1,8 +1,10 @@
-package com.surgeplay.glow.gl;
+package com.surgeplay.glow.capsule;
 
 import java.awt.image.BufferedImage;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+
+import com.surgeplay.glow.gl.CompatibleGL;
 
 import static com.surgeplay.glow.GLConstant.*;
 

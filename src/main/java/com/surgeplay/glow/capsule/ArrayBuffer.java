@@ -1,4 +1,4 @@
-package com.surgeplay.glow;
+package com.surgeplay.glow.capsule;
 
 import static com.surgeplay.glow.GLConstant.*;
 

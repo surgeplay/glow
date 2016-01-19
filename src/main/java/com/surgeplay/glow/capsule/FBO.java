@@ -1,8 +1,10 @@
-package com.surgeplay.glow;
+package com.surgeplay.glow.capsule;
 
 import static com.surgeplay.glow.GLConstant.*;
 
 import org.lwjgl.opengl.GL30;
+
+import com.surgeplay.glow.GLCoreSince;
 
 /**
  * Represents an OpenGL Framebuffer Object.
