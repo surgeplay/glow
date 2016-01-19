@@ -7,6 +7,7 @@ import java.nio.ByteOrder;
 import static com.surgeplay.glow.GLConstant.*;
 
 public class Texture {
+	private static ByteBuffer APIBUFFER = null;
 	private int handle = 0;
 	private WrapMode wrapMode = WrapMode.REPEAT; //The GL default
 	private int width = 0;
@@ -78,23 +79,24 @@ public class Texture {
 		gl.glBindTexture(GL_TEXTURE_2D, handle);
 		gl.glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, image.getWidth(), image.getHeight(), GL_BGRA, GL_UNSIGNED_BYTE, pixelData);
 		gl.glGenerateMipmap(GL_TEXTURE_2D);
-		
-		//GL11.glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getWidth(), image.getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, pixelData);
 
 	}
 	
 	
 	public static ByteBuffer extractImageData(BufferedImage im) {
-		ByteBuffer pixelData = ByteBuffer.allocateDirect(im.getWidth()*im.getHeight()*4).order(ByteOrder.nativeOrder());
+		if (APIBUFFER==null || APIBUFFER.capacity()<im.getWidth()*im.getHeight()*4) {
+			APIBUFFER = ByteBuffer.allocateDirect(im.getWidth()*im.getHeight()*4).order(ByteOrder.nativeOrder());
+		}
+		
 		for(int y=0; y<im.getHeight(); y++) {
 			for(int x=0; x<im.getWidth(); x++) {
 				int col = im.getRGB(x, y);
-				pixelData.putInt(col);
+				APIBUFFER.putInt(col);
 			}
 		}
-		pixelData.flip();
+		APIBUFFER.rewind();
 		
-		return pixelData;
+		return APIBUFFER;
 	}
 	
 	public Texture setMinFilter(Filter filter, MipFilter mip) {
