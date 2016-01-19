@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 import com.surgeplay.glow.gl.CompatibleGL;
 
-public class VertexBuffer {
+public class ArrayBuffer {
 	private ArrayList<Float> immediateData = null;
 	
 	private int handle = 0;
 	
-	public VertexBuffer(int count) {
+	public ArrayBuffer(int count) {
 		CompatibleGL gl = CompatibleGL.getInstance();
 		
 		this.handle = gl.glGenBuffers();
@@ -30,7 +30,7 @@ public class VertexBuffer {
 	 * Starts simulated immediate-mode rendering. Accumulates information in a buffer and then writes it
 	 * when {@link #finishAddingData()} is called.
 	 */
-	public VertexBuffer startAddingData() {
+	public ArrayBuffer startAddingData() {
 		if (immediateData==null) {
 			immediateData = new ArrayList<Float>();
 		} else {
@@ -43,7 +43,7 @@ public class VertexBuffer {
 	 * Simulated immediate-mode rendering. Uploads buffer data accumulated since {@link #startAddingData()}
 	 * was called. Data uploaded here will remove/replace anything that had been uploaded previously.
 	 */
-	public VertexBuffer finishAddingData() {
+	public ArrayBuffer finishAddingData() {
 		ByteBuffer buf = ByteBuffer.allocateDirect(immediateData.size()*4).order(ByteOrder.nativeOrder());
 		for(int i=0; i<immediateData.size(); i++) {
 			buf.putFloat(immediateData.get(i));
@@ -64,7 +64,7 @@ public class VertexBuffer {
 	 * Call {@link #startAddingData()} first!
 	 * Will be uploaded when {@link #finishAddingData()} is called.
 	 */
-	public VertexBuffer addData(float x) {
+	public ArrayBuffer addData(float x) {
 		immediateData.add(x);
 		return this;
 	}
@@ -75,7 +75,7 @@ public class VertexBuffer {
 	 * Call {@link #startAddingData()} first!
 	 * Will be uploaded when {@link #finishAddingData()} is called.
 	 */
-	public VertexBuffer addData(float x, float y) {
+	public ArrayBuffer addData(float x, float y) {
 		immediateData.add(x);
 		immediateData.add(y);
 		return this;
@@ -87,7 +87,7 @@ public class VertexBuffer {
 	 * Call {@link #startAddingData()} first!
 	 * Will be uploaded when {@link #finishAddingData()} is called.
 	 */
-	public VertexBuffer addData(float x, float y, float z) {
+	public ArrayBuffer addData(float x, float y, float z) {
 		immediateData.add(x);
 		immediateData.add(y);
 		immediateData.add(z);
@@ -100,7 +100,7 @@ public class VertexBuffer {
 	 * Call {@link #startAddingData()} first!
 	 * Will be uploaded when {@link #finishAddingData()} is called.
 	 */
-	public VertexBuffer addData(float x, float y, float z, float w) {
+	public ArrayBuffer addData(float x, float y, float z, float w) {
 		immediateData.add(x);
 		immediateData.add(y);
 		immediateData.add(z);
