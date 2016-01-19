@@ -7,9 +7,11 @@ import java.nio.ShortBuffer;
 
 import org.lwjgl.PointerBuffer;
 
+import com.surgeplay.glow.Context;
+
 /**
- * Every function from OpenGL ES 2.0 - because all of this functionality also occurs in OpenGL
- * Core contexts, this can be seen as the baseline for compatibility across GL versions and APIs.
+ * Every function in OpenGL ES 2.0 that is <em>also</em> available in OpenGL Core 3.0 contexts. This
+ * winds up being the best possible compatibility layer
  */
 public interface CompatibleGL {
 	public void glActiveTexture(int texture);
@@ -341,4 +343,16 @@ public interface CompatibleGL {
 	public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, FloatBuffer pointer);
 	
 	public void glViewport(int x, int y, int width, int height);
+	
+	public static CompatibleGL getInstance() {
+		if (Context.isGL()) {
+			if (Context.check(30)) {
+				return GLCore.INSTANCE;
+			} else {
+				throw new UnsupportedOperationException("Cannot create a compatible API layer in pre-GL3.0 contexts.");
+			}
+		} else {
+			throw new UnsupportedOperationException("GLES API layer not yet implemented");
+		}
+	}
 }

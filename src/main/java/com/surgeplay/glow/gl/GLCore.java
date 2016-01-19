@@ -16,9 +16,10 @@ import org.lwjgl.opengl.GL30;
 
 /**
  * Exposes functions as if they were OpenGL ES 2.0, but forwards down to function pointers which are
- * safe to call in an OpenGL Core 3.2 context.
+ * safe to call in an OpenGL Core 3.0 context.
  */
 public class GLCore implements CompatibleGL {
+	public static GLCore INSTANCE = new GLCore();
 
 	@Override
 	public void glActiveTexture(int texture) {
