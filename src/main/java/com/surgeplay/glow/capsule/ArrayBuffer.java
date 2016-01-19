@@ -14,9 +14,11 @@ public class ArrayBuffer {
 	
 	private int handle = 0;
 	
-	public ArrayBuffer(int count) {
-		CompatibleGL gl = CompatibleGL.getInstance();
-		
+	public ArrayBuffer() {
+		this(CompatibleGL.getInstance());
+	}
+	
+	public ArrayBuffer(CompatibleGL gl) {
 		this.handle = gl.glGenBuffers();
 	}
 	
@@ -25,6 +27,11 @@ public class ArrayBuffer {
 		gl.glBindBuffer(GL_ARRAY_BUFFER, handle);
 		gl.glBufferData(GL_ARRAY_BUFFER, data, mapHint(access, updates));
 	}
+	
+	public void setVertexStructure(String attribute, int offset, int count) {
+		
+	}
+	
 	
 	/**
 	 * Starts simulated immediate-mode rendering. Accumulates information in a buffer and then writes it
@@ -139,5 +146,10 @@ public class ArrayBuffer {
 		STREAM,
 		STATIC,
 		DYNAMIC;
+	}
+	
+	private static class AttributeDataAlignment {
+		public int numElements;
+		public int offset;
 	}
 }

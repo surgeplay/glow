@@ -11,8 +11,13 @@ import com.surgeplay.glow.gl.CompatibleGL;
  */
 public class FBO {
 	private final int handle;
+	
 	public FBO() {
-		handle = CompatibleGL.getInstance().glGenFramebuffers();
+		this(CompatibleGL.getInstance());
+	}
+	
+	public FBO(CompatibleGL gl) {
+		handle = gl.glGenFramebuffers();
 	}
 	
 	public boolean isComplete() {

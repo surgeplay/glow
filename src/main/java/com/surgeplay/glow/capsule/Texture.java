@@ -16,8 +16,10 @@ public class Texture {
 	private int height = 0;
 	
 	public Texture(BufferedImage image) {
-		CompatibleGL gl = CompatibleGL.getInstance();
-		
+		this(CompatibleGL.getInstance(), image);
+	}
+	
+	public Texture(CompatibleGL gl, BufferedImage image) {
 		this.handle = gl.glGenTextures();
 		if (handle==0) throw new IllegalStateException("Couldn't create texture");
 		gl.glBindTexture(GL_TEXTURE_2D, handle);
