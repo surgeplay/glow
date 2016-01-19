@@ -1,7 +1,5 @@
 package com.surgeplay.glow;
 
-import org.lwjgl.opengl.GL11;
-
 public class GLConstant {
 	//GL11
 	public static final int GL_ACCUM = 256;
