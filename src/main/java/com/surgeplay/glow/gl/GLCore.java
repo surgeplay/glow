@@ -19,8 +19,13 @@ import org.lwjgl.opengl.GL30;
  * safe to call in an OpenGL Core 3.0 context.
  */
 public class GLCore implements CompatibleGL {
-	public static GLCore INSTANCE = new GLCore();
+	private static GLCore INSTANCE = null;
 
+	public static GLCore instance() {
+		if (INSTANCE==null) INSTANCE = new GLCore();
+		return INSTANCE;
+	}
+	
 	@Override
 	public void glActiveTexture(int texture) {
 		GL13.glActiveTexture(texture);

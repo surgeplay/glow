@@ -5,6 +5,7 @@ import static com.surgeplay.glow.GLConstant.*;
 import java.util.EnumSet;
 import java.util.Map;
 
+import org.lwjgl.opengl.GL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,5 +61,7 @@ public class GLStateExplosion {
 		}
 		
 		while(gl.glGetError()!=GL_NO_ERROR) {}
+		
+		
 	}
 }

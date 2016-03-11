@@ -347,7 +347,7 @@ public interface CompatibleGL {
 	public static CompatibleGL getInstance() {
 		if (Context.isGL()) {
 			if (Context.check(30)) {
-				return GLCore.INSTANCE;
+				return GLCore.instance();
 			} else {
 				throw new UnsupportedOperationException("Cannot create a compatible API layer in pre-GL3.0 contexts.");
 			}

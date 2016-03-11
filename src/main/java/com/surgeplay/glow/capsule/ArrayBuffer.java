@@ -29,9 +29,10 @@ public class ArrayBuffer {
 	}
 	
 	public void setVertexStructure(String attribute, int offset, int count) {
+		CompatibleGL gl = CompatibleGL.getInstance();
+		gl.glVertexAttribPointer(0, 10, GL_FLOAT, false, 3, 0);
 		
 	}
-	
 	
 	/**
 	 * Starts simulated immediate-mode rendering. Accumulates information in a buffer and then writes it

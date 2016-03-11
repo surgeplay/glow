@@ -7,12 +7,17 @@ import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWKeyCallback;
 import org.slf4j.Logger;
 
+import com.surgeplay.glow.gl.CompatibleGL;
+import com.surgeplay.glow.gl.GLCore;
+
 public class Display {
 	private static long handle = 0;
 	@SuppressWarnings("unused")
 	private static GLFWErrorCallback errorCallback = null;
 	@SuppressWarnings("unused")
 	private static GLFWKeyCallback keyCallback = null;
+	
+	private static CompatibleGL glInstance = null;
 	
 	/**
 	 * Creates a GL context and window with the default GLFW_OPENGL_ANY_PROFILE,
@@ -31,6 +36,7 @@ public class Display {
 		if (isCreated()) return handle;
 		GLFW.glfwInit();
 		GLFW.glfwWindowHint(GLFW.GLFW_CLIENT_API, GLFW.GLFW_OPENGL_API);
+		glInstance = GLCore.instance();
 		return doCreate(title, width, height);
 	}
 	
@@ -62,6 +68,7 @@ public class Display {
 		GLFW.glfwWindowHint(GLFW.GLFW_OPENGL_PROFILE, GLFW.GLFW_OPENGL_CORE_PROFILE);
 		GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MAJOR, majorVersion);
 		GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MINOR, minorVersion);
+		glInstance = GLCore.instance();
 		return doCreate(title, width, height);
 	}
 	
@@ -79,6 +86,7 @@ public class Display {
 		GLFW.glfwWindowHint(GLFW.GLFW_OPENGL_PROFILE, GLFW.GLFW_OPENGL_CORE_PROFILE);
 		GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MAJOR, majorVersion);
 		GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MINOR, minorVersion);
+		//TODO: Set glInstance once GLES shim is implemented.
 		return doCreate(title, width, height);
 	}
 	
@@ -130,6 +138,17 @@ public class Display {
 		);
 		GLFW.glfwSetErrorCallback(tmp);
 		errorCallback = tmp;
+	}
+	
+	/**
+	 * Gets an instance of CompatibleGL appropriate for interacting with the context last created
+	 * through GLOW. 
+	 */
+	public static CompatibleGL getGL() {
+		if (!isCreated()) throw new IllegalStateException(
+				"Cannot create a GL object - no context exists, so we don't know whether a GL, GLES, or WebGL object should be created! " +
+				"And no, WebGL isn't supported. The point is we can't create a specific object before knowing the general part.");
+		return glInstance;
 	}
 	
 	public static void destroy() {
